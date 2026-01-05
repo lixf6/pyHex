@@ -1,0 +1,5 @@
+django==3.2.4
+pya2ldb==0.17.5
+openpyxl==3.0.7
+xlrd==1.2.0
+lxml==4.9.3
