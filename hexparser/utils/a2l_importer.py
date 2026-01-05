@@ -5,7 +5,7 @@ from concurrent.futures import ThreadPoolExecutor
 from django.db import transaction
 from django.db import models
 
-from apps.models.models import (
+from hexparser.models import (
     A2LFile,
     A2LProject,
     A2LModule,

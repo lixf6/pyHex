@@ -15,9 +15,9 @@ def _ensure_django_setup():
         from django.conf import settings
         if not settings.configured:
             # 设置 Django 环境
-            os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'calibracloud_webapi.settings.dev')
+            os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'config.settings')
             # 添加项目根目录到 Python 路径
-            project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            project_root = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
             if project_root not in sys.path:
                 sys.path.insert(0, project_root)
             # 初始化 Django
@@ -34,7 +34,7 @@ _ensure_django_setup()
 from django.db.models import Q  # noqa: E402
 from django.db import transaction  # noqa: E402
 
-from apps.models.models import Characteristic, AxisPts, AxisDescr, AxisPtsRef, Hex, DataFile, Maturity, A2LFile  # noqa: E402
+from hexparser.models import Characteristic, AxisPts, AxisDescr, AxisPtsRef, Hex, DataFile, Maturity, A2LFile  # noqa: E402
 
 logger = logging.getLogger(__name__)
 

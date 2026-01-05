@@ -1,3 +1,42 @@
+import logging
+from django.db import models
+from django.core.validators import MinValueValidator, MaxValueValidator
+
+logger = logging.getLogger(__name__)
+
+
+# 前置模型定义
+class A2LFile(models.Model):
+    """A2L文件"""
+    name = models.CharField('文件名', max_length=255)
+    file_path = models.CharField('文件路径', max_length=512)
+    create_time = models.DateTimeField('创建时间', auto_now_add=True)
+    update_time = models.DateTimeField('更新时间', auto_now=True)
+
+    class Meta:
+        db_table = 'cal_a2l_file'
+        verbose_name = 'A2L文件'
+
+    def __str__(self):
+        return self.name
+
+
+class DataFile(models.Model):
+    """数据文件（HEX等）"""
+    name = models.CharField('文件名', max_length=255)
+    file_path = models.CharField('文件路径', max_length=512)
+    file_type = models.CharField('文件类型', max_length=32, default='HEX')
+    create_time = models.DateTimeField('创建时间', auto_now_add=True)
+    update_time = models.DateTimeField('更新时间', auto_now=True)
+
+    class Meta:
+        db_table = 'cal_data_file'
+        verbose_name = '数据文件'
+
+    def __str__(self):
+        return self.name
+
+
 class WorkPackage(models.Model):
     """标定工作包：归类用"""
 
